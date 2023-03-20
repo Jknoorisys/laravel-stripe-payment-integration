@@ -21,9 +21,7 @@ return [
     // Invoice
     'Invoice'       => 'Invoice',
     'Invoice No'    => 'Invoice No',
-    'Start Date'    => 'Start Date',
-    'End Date'      => 'End Date',
-    'Paid on'       => 'Paid on',
+    'Date'          => 'Date',
     'Description'   => 'Description',
     'Qty'           => 'Qty',
     'Unit Price'    => 'Unit Price',

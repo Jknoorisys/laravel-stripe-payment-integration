@@ -16,6 +16,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class StripeController extends Controller
 {
@@ -228,6 +229,7 @@ class StripeController extends Controller
         }
 
         try{
+
             $session_id = $request->session_id;
 
             // Fetch payment details based on the given 'session_id' from the 'Bookings' table
@@ -271,7 +273,29 @@ class StripeController extends Controller
                     ];
 
                     // insert transaction details in Transactions table
-                    $insert = Transactions::insert($transaction_data);
+                    $trxn = Transactions::insertGetId($transaction_data);
+
+                    if ($trxn) {
+                        $user = User::find($user_id);
+                        $product = Products::find($payment_details->product_id);
+
+                        // generate invoice pdf and send to customer
+                        $invoice_data = [
+                            'trxn_id' => $trxn,
+                            'invoice_number' => 'INVOICE_' .(string)rand(10000, 20000),
+                            'user_name' => $user ? $user->name : '',
+                            'user_email' => $user ? $user->email : '',
+                            'product_name' => $product ? $product->name : '',
+                            'product_price' => $product ? $product->price : '',
+                            'quantity' => $payment_details->quantity,
+                            'amount_paid' => $session->amount_total/100,
+                            'currency' => $session->currency,
+                            'date' => Carbon::now()->format('d.m.Y')
+                        ];
+                        
+                        // helper function tp generate and send invoice
+                        generateInvoicePdf($invoice_data);
+                    }
                     return response()->json([
                         'status'    => 'success',
                         'message'   => trans('msg.stripe.success'),
