@@ -282,7 +282,7 @@ class StripeController extends Controller
                         // generate invoice pdf and send to customer
                         $invoice_data = [
                             'trxn_id' => $trxn,
-                            'invoice_number' => 'INVOICE_' .(string)rand(10000, 20000),
+                            'invoice_number' => (string)rand(10000, 20000),
                             'user_name' => $user ? $user->name : '',
                             'user_email' => $user ? $user->email : '',
                             'product_name' => $product ? $product->name : '',
