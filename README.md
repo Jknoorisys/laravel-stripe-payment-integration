@@ -1,66 +1,58 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1>Laravel Stripe Payment Integration</h1>
+<h4>Steps to clone laravel project</h4>
+<ul>
+    <li>Clone your project</li>
+    <li>Go to the folder application using cd command on your cmd or terminal</li>
+    <li>Run composer install on your cmd or terminal</li>
+    <li>Copy .env.example file to .env in the root folder using command <i> cp .env.example .env </i></li>
+    <li>Open your .env file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration.</li>
+    <li>Run php artisan key:generate</li>
+    <li>Run php artisan migrate</li>
+    <li>Run php artisan serve</li>
+    <li>Go to http://localhost:8000/</li>
+</ul>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<h4>Follow the steps below:</h4>
+<ul>
+    <li> Create New Project </li>
+    <li> Install Packages for Stripe-php Using Composer </li>
+    <li> Create Stripe account </li>
+    <li> Configure the package </li>
+    <li> Create Routes </li>
+    <li> Run the app </li>
+</ul>
 
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<ol>
+    <li><h5>Create a new project</h5></li>
+        <p>Create a new project with the command as below.</p>
+        <p><i>composer create-project laravel/laravel-stripe-payment-integration</i></p>
+        <p>After the new project has been created, go to your project directory.</p>
+        <p><i>cd laravel-stripe-payment-integration</i></p>
+    <li><h5>Install Packages for Stripe-php Using Composer</h5></li>
+        <p>Run the following command.</p>
+        <p><i>composer require stripe/stripe-php</i></p>
+    <li><h5>Create Stripe account and get API keys</h5></li>
+        <p>Create a Stripe account and login to the dashboard. Navigate through the Developers -> API keys menu to get the API keys. There are two type of standard API keys named secret key and publishable key. The secret key will be masked by default which has to be revealed by clicking reveal key token control explicitly.</p>
+        <img src="https://media.stripe.com/6050469652bc9a2aa6ea39ef25bd4980a723ad2a.png" alt="img" >
+        <img src="https://techsolutionstuff.com/adminTheme/assets/img/stripe_payment_gateway_api_key.png" alt="img">
+    <li><h5>Configure the package</h5></li>
+        <p>After the package installation is complete, you open your project and add the key and secret key that you got in the .env file.</p>
+        <p>
+        STRIPE_KEY=pk_test_xxxxxx<br>
+        STRIPE_SECRET=sk_test_xxxxxx<br>
+        </p>
+    <li><h5>Create Routes</h5></li>
+        <p>Now we need to create an application route that we will test the application test transaction on. Open the route/api.php application route file and add the new routes</p>
+        <p>Create Controller</p>
+        <p><i>php artisan make:controller StripeController</i></p>
+        <p>Run database migrations</p>
+        <p><i>php artisan migrate</i></p>
+        <p>Run database seeder</p>
+        <p><i>php artisan db:seed --class=ProductsSeeder</i></p>
+    <li><h5>Run the app</h5></li>
+        <p>Stripe subscription integration complete. Now we need to make a transaction. Run the Laravel server using the Artisan command below.</p>
+        <p><i>php artisan serve</i></p>
+        <p><i>Run APIs on postman (https://api.postman.com/collections/18476697-0daf72f8-89a5-4a08-a382-8846c7c4c2c0?access_key=PMAT-01GVYPDJMC37HEPYGJYF7ZKED2)</i></p>
+    <p>Thus this tutorial I provide, hopefully useful.</p>
+    <p>Thanks.</p>  
+</ol>
