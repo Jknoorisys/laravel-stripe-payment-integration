@@ -25,34 +25,51 @@
 <ol>
     <li><h5>Create a new project</h5></li>
         <p>Create a new project with the command as below.</p>
-        <p><i>composer create-project laravel/laravel-stripe-payment-integration</i></p>
+        ```bash
+        composer create-project laravel/laravel-stripe-payment-integration
+        ```
         <p>After the new project has been created, go to your project directory.</p>
-        <p><i>cd laravel-stripe-payment-integration</i></p>
+        ```
+        cd laravel-stripe-payment-integration
+        ```
     <li><h5>Install Packages for Stripe-php Using Composer</h5></li>
         <p>Run the following command.</p>
-        <p><i>composer require stripe/stripe-php</i></p>
+        ```bash
+        composer require stripe/stripe-php
+        ```
     <li><h5>Create Stripe account and get API keys</h5></li>
         <p>Create a Stripe account and login to the dashboard. Navigate through the Developers -> API keys menu to get the API keys. There are two type of standard API keys named secret key and publishable key. The secret key will be masked by default which has to be revealed by clicking reveal key token control explicitly.</p>
         <img src="https://media.stripe.com/6050469652bc9a2aa6ea39ef25bd4980a723ad2a.png" alt="img" >
         <img src="https://techsolutionstuff.com/adminTheme/assets/img/stripe_payment_gateway_api_key.png" alt="img">
     <li><h5>Configure the package</h5></li>
         <p>After the package installation is complete, you open your project and add the key and secret key that you got in the .env file.</p>
-        <p>
+        ```
         STRIPE_KEY=pk_test_xxxxxx<br>
         STRIPE_SECRET=sk_test_xxxxxx<br>
-        </p>
+        ```
     <li><h5>Create Routes</h5></li>
         <p>Now we need to create an application route that we will test the application test transaction on. Open the route/api.php application route file and add the new routes</p>
         <p>Create Controller</p>
-        <p><i>php artisan make:controller StripeController</i></p>
+        ```php
+        php artisan make:controller StripeController
+        ```
         <p>Run database migrations</p>
-        <p><i>php artisan migrate</i></p>
+        ```php
+        php artisan migrate
+        ```
         <p>Run database seeder</p>
-        <p><i>php artisan db:seed --class=ProductsSeeder</i></p>
+        ```php
+        php artisan db:seed --class=ProductsSeeder
+        ```
     <li><h5>Run the app</h5></li>
         <p>Stripe subscription integration complete. Now we need to make a transaction. Run the Laravel server using the Artisan command below.</p>
-        <p><i>php artisan serve</i></p>
-        <p><i>Run APIs on postman (https://api.postman.com/collections/18476697-0daf72f8-89a5-4a08-a382-8846c7c4c2c0?access_key=PMAT-01GVYPDJMC37HEPYGJYF7ZKED2)</i></p>
+        ```php
+        php artisan serve
+        ```
+        <p>Run APIs on postman by importing collection</p>
+        ```
+        https://api.postman.com/collections/18476697-0daf72f8-89a5-4a08-a382-8846c7c4c2c0?access_key=PMAT-01GVYPDJMC37HEPYGJYF7ZKED2)
+        ```
     <p>Thus this tutorial I provide, hopefully useful.</p>
     <p>Thanks.</p>  
 </ol>
